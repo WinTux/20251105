@@ -1,6 +1,6 @@
 - name: Desplegando servicio Spring Boot
   hosts: all
-  becomes: yes
+  become: yes
   remote_user: ubuntu
   vars:
     app_name: ProySpring

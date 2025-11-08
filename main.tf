@@ -18,7 +18,7 @@ locals {
 
 resource "aws_instance" "mi_app_spring" {
   count = local.nombre_workspace == "prod" ? 2 : 1
-  ami           = "ami-0023593d16b53b3e9"
+  ami           = "ami-0ec4ab14b1c5a10f2" #es Windows, no funciona: "ami-0023593d16b53b3e9"
   instance_type = "t3.micro"
   subnet_id = module.vpc.public_subnets[0]
   vpc_security_group_ids = [module.security-group.security_group_id]
@@ -41,13 +41,13 @@ resource "aws_instance" "mi_app_spring" {
   }
 }
 
-resource "aws_cloudwatch_log_group" "grupo_log_ec2" {
-  for_each = var.nombres_servicios
-  tags = {
-    Environment = "prueba"
-    Servicio = each.key
-  }
-  lifecycle {
-    create_before_destroy = true
-  }
-}
+#resource "aws_cloudwatch_log_group" "grupo_log_ec2" {
+#  for_each = var.nombres_servicios
+#  tags = {
+#    Environment = "prueba"
+#    Servicio = each.key
+#  }
+#  lifecycle {
+#    create_before_destroy = true
+#  }
+#}
