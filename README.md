@@ -18,6 +18,13 @@ docker exec -it jenkins bash
 ```bash
 cat /var/jenkins_home/secrets/initialAdminPassword
 ```
+## Agregando el archivo *.pem en Jenkins
+
+- Nos dirigimos a: http://localhost:8081/manage/credentials/
+- Clic en Nueva credencial
+- En tipo elegimos: Secret file
+- Para el nombre ponemos: clasesdevops-pem
+- clic en el botón "Seleccionar archivo" y elegimos nuestro *.pem
 
 ### Autenticándonos en Jenkins
 
@@ -30,21 +37,21 @@ Nos vamos a la siguiente dirección
 http://localhost:8081/manage/configureTools/
 ```
 Nos vamos a la sección: instalaciones de Terraform
-Clic en "+ Añadir Terraform"
-En "name" ponemos: Terraform_1.13
-Nos aseguramos que esté marcado: Instalar automáticamente
-En el selplegable, elegimos: Terraform 1.13.4 (amd64)
-clic en: Save
+- Clic en "+ Añadir Terraform"
+- En "name" ponemos: Terraform_1.13
+- Nos aseguramos que esté marcado: Instalar automáticamente
+- En el selplegable, elegimos: Terraform 1.13.4 (amd64)
+- clic en: Save
 
 # Creando nueva tarea en Jenkins
 
-Desde la página principal clic en "+ Nueva Tarea"
-Como nombre lo dejamos en: ProySpring-CICD
-Seleccionamos "Pipeline"
-Clic en OK
+- Desde la página principal clic en "+ Nueva Tarea"
+- Como nombre lo dejamos en: ProySpring-CICD
+- Seleccionamos "Pipeline"
+- Clic en OK
 
-En Definition elegimos: Pipeline script from SCM
-En SCM elegimos: Git
-En Repository URL agregamos: https://github.com/WinTux/20251105.git
-En Script path lo dejamos en: Jenkinsfile
-Clic en Save
+- En Definition elegimos: Pipeline script from SCM
+- En SCM elegimos: Git
+- En Repository URL agregamos: https://github.com/WinTux/20251105.git
+- En Script path lo dejamos en: Jenkinsfile
+- Clic en Save
