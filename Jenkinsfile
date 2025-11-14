@@ -61,7 +61,7 @@ pipeline {
     }
     stage('Terraform destroy') {
       steps {
-        input mmessage: "Voy a detener Terraform ¿deseas ejecutar Terraform destroy?"
+        input message: "Voy a detener Terraform ¿deseas ejecutar Terraform destroy?"
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials'],file(credentialsId: 'clasesdevops-pem', variable:'AWS_KEY_FILE')]) {
           sh '''
           terraform init
