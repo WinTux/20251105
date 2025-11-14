@@ -42,9 +42,7 @@ pipeline {
     }
     stage('Ejecución de Terraform init, plan, Apply') {
       steps {
-        withCredentials([[
-          $class: 'AmazonWebServicesCredentialsBinding', credencialsId: 'aws-credentials'
-        ],file(credencialsId: 'clasesdevops-pem'), variable:'AWS_KEY_FILE']) {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credencialsId: 'aws-credentials'],file(credencialsId: 'clasesdevops-pem'), variable:'AWS_KEY_FILE']) {
           sh '''
           terraform init
           terraform validate
