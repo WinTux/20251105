@@ -62,7 +62,7 @@ pipeline {
     stage('Terraform destroy') {
       steps {
         input mmessage: "Voy a detener Terraform ¿deseas ejecutar Terraform destroy?"
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials']>
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials'],file(credentialsId: 'clasesdevops-pem', variable:'AWS_KEY_FILE')]) {
           sh '''
           terraform init
           terraform destroy -auto-approve -var="ruta_private_key=${AWS_KEY_FILE}"
