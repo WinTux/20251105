@@ -2,6 +2,12 @@
 
 ## Iniciar Docker
 
+## Crear la imagen
+
+```bash
+docker build -t jenkins-ansible:v1 .
+```
+
 ## Crear en contenedor
 ```bash
 docker run -d --name jenkins -p 8081:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v ~/jenkins_home:/var/jenkins_home jenkins-ansible:v1
@@ -60,3 +66,57 @@ Nos vamos a la sección: instalaciones de Terraform
 - En Repository URL agregamos: https://github.com/WinTux/20251105.git
 - En Script path lo dejamos en: Jenkinsfile
 - Clic en Save
+
+## La estructura de este proyecto se vería así
+```bash
+.
+├── ansible.cfg
+├── clasesdevops.pem
+├── Dockerfile
+├── generar_inventario_3er_ejemplo.sh
+├── generar_inventario_ini.sh
+├── inventory2.ini
+├── inventory.ini
+├── Jenkinsfile
+├── main.tf
+├── main.yml
+├── network.tf
+├── outputs.tf
+├── ProySpring
+│   ├── mvnw
+│   ├── mvnw.cmd
+│   ├── pom.xml
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── pepe
+│       │   │           └── ProySpring
+│       │   │               ├── Controllers
+│       │   │               │   └── UnicoController.java
+│       │   │               └── ProySpringApplication.java
+│       │   └── resources
+│       │       └── application.properties
+│       └── test
+│           └── java
+│               └── com
+│                   └── pepe
+│                       └── ProySpring
+│                           └── ProySpringApplicationTests.java
+├── README.md
+├── roles
+│   └── springboot
+│       ├── files
+│       │   └── ProySpring.jar
+│       ├── handlers
+│       │   └── main.yml
+│       ├── tasks
+│       │   └── main.yml
+│       └── templates
+│           └── springboot.service.j2
+├── terraform.tfstate.d
+│   └── prod
+│       ├── terraform.tfstate
+│       └── terraform.tfstate.backup
+└── variables.tf
+```
