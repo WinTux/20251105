@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-    chose(name: 'COLOR', choices: ['blue','green'], description: 'Color a desplegar')
+    choice(name: 'COLOR', choices: ['blue','green'], description: 'Color a desplegar')
   }
   tools {
     terraform 'Terraform_1.13'
