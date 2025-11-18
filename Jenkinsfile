@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  parameters {
+    chose(name: 'COLOR', choices: ['blue','green'], description: 'Color a desplegar')
+  }
   tools {
     terraform 'Terraform_1.13'
   }
@@ -43,12 +46,12 @@ pipeline {
     stage('Ejecución de Terraform init, plan, Apply') {
       steps {
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials'],file(credentialsId: 'clasesdevops-pem', variable:'AWS_KEY_FILE')]) {
-          sh '''
+          sh """
           terraform init
           terraform validate
-          terraform plan -var="ruta_private_key=${AWS_KEY_FILE}" -out=tfplan
+          terraform plan -var="ruta_private_key=${AWS_KEY_FILE}" -var="color_activo=${params.COLOR}" -out=tfplan
           terraform apply -auto-approve tfplan
-          '''
+          """
         }
       }
     }

@@ -10,3 +10,10 @@ variable "ruta_private_key" {
   description = "Ruta del archivo PEM para conexión SSH"
   type = string
 }
+
+# Para blue/green
+variable "color_activo" {
+  type = string
+  default = "blue"
+  description = "Para asignar un color en blue/green; por defecto blue"
+}
